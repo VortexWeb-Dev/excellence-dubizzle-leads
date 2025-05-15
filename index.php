@@ -194,7 +194,7 @@ class LeadProcessor
             $assignedById = getResponsiblePerson($lead['listing_reference'], 'reference');
         } elseif (!empty($lead['receiver_number'])) {
             $responsiblePerson = getResponsiblePerson($lead['receiver_number'], 'phone');
-            $assignedById = ($responsiblePerson == '1945' || $responsiblePerson == null) ? DEFAULT_ASSIGNED_USER_ID : $responsiblePerson;
+            $assignedById = $responsiblePerson == null ? DEFAULT_ASSIGNED_USER_ID : $responsiblePerson;
         }
 
         $title = "{$platform} - Call - " . ($lead['listing_reference'] !== '' ? $lead['listing_reference'] : 'No reference');
